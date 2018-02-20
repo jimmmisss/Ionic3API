@@ -1,3 +1,8 @@
+/**
+ * @author Wesley F Pereira
+ * email: jimmmisss@gmail.com
+ */
+
 import { Usuario } from '../../entity/Usuario';
 import { Observable } from 'rxjs/Observable';
 import { UrlBackEnd } from '../../entity/UrlBackEnd';

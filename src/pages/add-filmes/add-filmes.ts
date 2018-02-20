@@ -1,3 +1,8 @@
+/**
+ * @author Wesley F Pereira
+ * email: jimmmisss@gmail.com
+ */
+
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';

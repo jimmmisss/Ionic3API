@@ -1,3 +1,8 @@
+/**
+ * @author Wesley F Pereira
+ * email: jimmmisss@gmail.com
+ */
+
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FormBuilder } from '@angular/forms';
