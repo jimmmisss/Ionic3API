@@ -5,7 +5,7 @@
 
 import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RequestOptions, HttpModule, Http } from '@angular/http';
 import { FormBuilder } from '@angular/forms';
 import { LoginServiceProvider } from '../../providers/login-service/login-service';

@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { CookieService } from 'angular2-cookie/core';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -42,7 +43,9 @@ import { LoginServiceProvider } from '../providers/login-service/login-service';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpClientModule,
-    LoginServiceProvider
+    HttpModule,  
+    LoginServiceProvider,
+    CookieService
   ]
 })
 export class AppModule {}

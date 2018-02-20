@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import { UrlBackEnd } from '../../entity/UrlBackEnd';
 import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, HttpModule} from '@angular/http';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import 'rxjs/add/operator/map';
 
