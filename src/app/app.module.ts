@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
@@ -11,7 +13,6 @@ import { InfoFilmesPage } from '../pages/info-filmes/info-filmes';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HttpModule } from '@angular/http';
 import { LoginServiceProvider } from '../providers/login-service/login-service';
 
 @NgModule({
@@ -24,8 +25,9 @@ import { LoginServiceProvider } from '../providers/login-service/login-service';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpClientModule,
+    HttpModule,
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -39,6 +41,7 @@ import { LoginServiceProvider } from '../providers/login-service/login-service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HttpClientModule,
     LoginServiceProvider
   ]
 })
