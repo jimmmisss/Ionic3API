@@ -3,14 +3,15 @@
  * email: jimmmisss@gmail.com
  */
 
-import { Usuario } from '../../entity/Usuario';
-import { Observable } from 'rxjs/Observable';
-import { UrlBackEnd } from '../../entity/UrlBackEnd';
-import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, HttpModule} from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/map';
+
+import { UrlBackEnd } from '../../entity/UrlBackEnd';
+import { Usuario } from '../../entity/Usuario';
 
 @Injectable()
 export class LoginServiceProvider {
@@ -24,18 +25,18 @@ export class LoginServiceProvider {
     public httpClientModule: HttpClientModule
   ) {
     
-    this.loginUrl = UrlBackEnd.Url() + "oauth/token?grant_type=password&username=";
-    this.userUrl = UrlBackEnd.Url() + "/usuario/logado";
+    this.loginUrl = UrlBackEnd.Url() + UrlBackEnd.oauthUrl();
+    this.userUrl = UrlBackEnd.Url() + UrlBackEnd.usuarioUrl();
 
   }
-
+  //1pmh3399
   public login(usuario: Usuario): Observable<any> {
 
       this.loginUrl + usuario.usuario + "&password" + usuario.senha;
 
-      let headers = new Headers({
-        "Authorization": "Basic " + btoa("mobile" + ':' + "123")
-      });
+      let headers = new Headers(/**{"Authorization": "Basic " + btoa("mobile" + ':' + "123")}*/);
+          headers.append("Content-Type", "application/json;charset=UTF-8");    
+          headers.append("Authorization", "Basic " + btoa("mobile" + ':' + "123"));
 
       let options = new RequestOptions({ headers: headers });
 

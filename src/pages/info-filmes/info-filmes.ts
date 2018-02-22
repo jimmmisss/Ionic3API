@@ -6,6 +6,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
+import { UrlBackEnd } from '../../entity/UrlBackEnd';
 
 @IonicPage()
 @Component({
@@ -25,11 +26,11 @@ export class InfoFilmesPage {
     let url = this.navParams.get('url');
     let id = this.navParams.get('filme_id');
 
-    this.http.get(url + '/posts/' + id)
+    this.http.get(url + UrlBackEnd.infoFilme() + id)
         .map(res => res.json())
         .subscribe(data => {
           this.info = data
-          //console.log(data);
+          console.log(data);
         });
 
   }

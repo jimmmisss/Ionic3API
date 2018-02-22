@@ -23,6 +23,7 @@ export class HomePage {
   loading: any;
 
   constructor(
+  
     public navCtrl: NavController,
     public navParams: NavParams,
     public requestOptions: RequestOptions,
@@ -31,6 +32,7 @@ export class HomePage {
     private loginService: LoginServiceProvider,
     private cookieService: CookieService,
     public httpClientModule: HttpClientModule
+    
   ) {
 
     this.loginForm = formBuider.group({
@@ -41,7 +43,6 @@ export class HomePage {
   }
 
   loginApp(): void {
-
     if(this.loginForm.valid) {
       this.loginService.login(this.loginForm.value).subscribe(
             res => this.loginSuccess(res)
@@ -49,25 +50,20 @@ export class HomePage {
     } else {
       this.loading.present();
     }
-
   }
 
   public loginSuccess(res: any) {
-
     this.cookieService.removeAll();
     this.cookieService.put("accessToken", res.access_token);
     this.requestOptions.headers.set('Authorization', "Bearer " + res.access_token);
     this.loginService.getUsuarioAtual(res.access_token).subscribe(
       res => this.redirectPage(res)
     );
-
   }
 
   public redirectPage(res: any) {
-
       this.cookieService.putObject("usuarioAtual", res);
       this.navCtrl.setRoot(ListFilmesPage);
-
   }
 
   redirectUser(response) {

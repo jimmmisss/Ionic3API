@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { RequestOptions } from '@angular/http';
 
 import { HomePage } from '../pages/home/home';
 import { ListFilmesPage } from '../pages/list-filmes/list-filmes';
@@ -12,29 +13,30 @@ import { CookieService } from 'angular2-cookie/core';
 @Component({
   templateUrl: 'app.html'
 })
+
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
-
   pages: Array<{title: string, component: any}>;
 
   constructor(
     public platform: Platform,
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
+    public requestOptions: RequestOptions,
     public cookieService: CookieService
   ) {
 
-    this.initializeApp();
-
     if (this.cookieService.getObject("usuarioAtual")) {
+      this.requestOptions.headers.set('Authorization', "Bearer " + this.cookieService.get("accessToken"));
       this.rootPage = ListFilmesPage;
     } else {
-      alert("algo errado");      
+      this.rootPage = HomePage;      
     }
 
-    // used for an example of ngFor and navigation
+    this.initializeApp();
+ 
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Lista Filmes', component: ListFilmesPage },

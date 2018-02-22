@@ -16,9 +16,10 @@ import { UrlBackEnd } from '../../entity/UrlBackEnd';
   selector: 'page-list-filmes',
   templateUrl: 'list-filmes.html',
 })
+
 export class ListFilmesPage {
 
-  public filmes: Array<{}>;
+  public filmes;
   public urlBackEnd: string;
 
   constructor(
@@ -26,14 +27,15 @@ export class ListFilmesPage {
     public navParams: NavParams,
     public http: Http
   ) {
-
+    
     this.urlBackEnd = UrlBackEnd.Url();
-
-    this.http.get(this.urlBackEnd + 'v1/protected/filme')
-        .map(res => res.json())
-        .subscribe(data => {
-            this.filmes = data;
-        });
+    
+    this.http.get(this.urlBackEnd + UrlBackEnd.listaFilmes())
+      .map(res => res.json())
+      .subscribe(data => {
+          data = this.filmes = data['content'],
+          console.log(data['content']);
+      })     
 
   }
 
