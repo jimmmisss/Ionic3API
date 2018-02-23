@@ -32,7 +32,7 @@ export class MyApp {
       this.requestOptions.headers.set('Authorization', "Bearer " + this.cookieService.get("accessToken"));
       this.rootPage = ListFilmesPage;
     } else {
-      this.rootPage = HomePage;      
+      this.rootPage = HomePage;
     }
 
     this.initializeApp();

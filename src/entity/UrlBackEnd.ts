@@ -25,4 +25,8 @@ export class UrlBackEnd {
         return "v1/protected/filme/";
     }
 
+    static addFilme() {
+        return "v1/admin/filme/";
+    }
+
 }
